@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViachaPOS | El POS #1 de Viacha</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0B0B0B;color:#fff;font-family:Inter,sans-serif;overflow-x:hidden}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(11,11,11,0.9);border-bottom:1px solid #1a1a1a;position:sticky;top:0;backdrop-filter:blur(20px);z-index:100}
+.logo{font-weight:800;font-size:26px;letter-spacing:-0.02em}.logo span{color:#FFB800}
+.nav{display:flex;gap:28px;align-items:center}
+.nav a{color:#9A9A94;text-decoration:none;font-size:14px;font-weight:500} .nav a:hover{color:#fff}
+.btn-wa{background:#25D366;color:#fff;padding:12px 22px;border-radius:100px;font-weight:800;text-decoration:none;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;padding:90px 48px;align-items:center}
+.hero h1{font-family:'Instrument Serif';font-size:74px;line-height:0.9;letter-spacing:-0.03em}
+.hero h1 b{background:linear-gradient(90deg,#FF8A00,#FFD600);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#9A9A94;font-size:18px;margin-top:24px;line-height:1.6;max-width:540px}
+.ctas{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap}
+.cta1{background:linear-gradient(90deg,#FF8A00,#FFC400);color:#000;padding:18px 32px;border-radius:100px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.cta2{border:1px solid #333;color:#fff;padding:18px 32px;border-radius:100px;text-decoration:none;font-weight:600;background:#141414}
+.mockup{background:#141414;border-radius:28px;border:1px solid #2a2a2a;padding:14px;transform:rotate(1.5deg);box-shadow:0 0 100px rgba(255,184,0,0.15);position:relative}
+.mockup img{width:100%;border-radius:18px;display:block}
+.badge-live{display:inline-flex;align-items:center;gap:8px;background:#1a1a1a;border:1px solid #2a2a2a;padding:8px 14px;border-radius:100px;font-size:12px;margin-bottom:20px;color:#FFB800}
+.section{padding:90px 48px}
+.section-head{text-align:center;max-width:700px;margin:0 auto 50px auto}
+.section-head h2{font-family:'Instrument Serif';font-size:56px;line-height:1}
+.section-head p{color:#9A9A94;margin-top:16px;line-height:1.6}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat{background:#141414;border:1px solid #222;border-radius:20px;padding:28px;text-align:left;transition:0.3s}
+.feat:hover{border-color:#FFB800;transform:translateY(-4px)}
+.feat .icon{width:56px;height:56px;margin-bottom:18px;background:linear-gradient(135deg,#FF8A00,#FFC400);border-radius:14px;display:grid;place-items:center;font-size:26px;color:#000}
+.feat h3{font-size:18px;margin-bottom:10px} .feat p{color:#9A9A94;font-size:13.5px;line-height:1.6}
+.feat ul{margin-top:12px;list-style:none;color:#9A9A94;font-size:13px;line-height:1.8}
+.feat ul li::before{content:"✓ ";color:#FFB800;font-weight:bold}
+.modulos{display:grid;grid-template-columns:1.2fr 0.8fr;gap:24px;align-items:center;background:#141414;border:1px solid #222;border-radius:28px;padding:20px;margin-top:20px}
+.modulos img{width:100%;border-radius:16px}
+.about{display:grid;grid-template-columns:0.9fr 1.1fr;gap:50px;align-items:center;background:linear-gradient(180deg,#141414 0%,#0B0B0B 100%);border-top:1px solid #222;border-bottom:1px solid #222}
+.about-img{border-radius:24px;overflow:hidden;border:1px solid #2a2a2a;position:relative}
+.about-img img{width:100%;display:block}
+.about-stats{display:flex;gap:24px;margin-top:24px}
+.stat b{font-size:32px;color:#FFB800;display:block} .stat span{font-size:12px;color:#9A9A94}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.price-card{background:#141414;border:1px solid #222;border-radius:20px;padding:32px;position:relative}
+.price-card.popular{border:2px solid #FFB800;transform:scale(1.03);background:#1a1600}
+.price-card h4{color:#9A9A94;font-size:13px;letter-spacing:1px}
+.price-card .price{font-size:44px;font-weight:800;margin:12px 0} .price small{font-size:14px;color:#9A9A94;font-weight:400}
+.wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:64px;height:64px;border-radius:100px;display:grid;place-items:center;font-size:32px;text-decoration:none;box-shadow:0 8px 30px rgba(37,211,102,0.4);z-index:200}
+.screenshots{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.shot{border-radius:20px;overflow:hidden;border:1px solid #222;position:relative;background:#141414}
+.shot img{width:100%;display:block} .shot .label{position:absolute;top:14px;left:14px;background:#FFC400;color:#000;padding:6px 14px;border-radius:100px;font-size:11px;font-weight:800}
+.faq{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid #222;padding:20px 0} .faq-item b{display:block;margin-bottom:8px;font-size:16px} .faq-item p{color:#9A9A94;font-size:14px;line-height:1.6}
+.footer{padding:40px 48px;border-top:1px solid #222;color:#666;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer a{color:#9A9A94;text-decoration:none}
+@media(max-width:900px){.hero,.about,.modulos,.features,.pricing,.screenshots{grid-template-columns:1fr}.hero,.section{padding:28px 20px}.hero h1{font-size:44px}.top{padding:14px 20px}.nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="logo">Viacha<span>POS</span> <small style="font-size:11px;color:#9A9A94;font-weight:400;margin-left:10px">Hecho en Viacha para Bolivia</small></div>
+  <div class="nav">
+    <a href="#modulos">Módulos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#precios">Precios</a>
+    <a class="btn-wa" href="https://wa.me/59178912345?text=Hola%20ViachaPOS%20quiero%20comprar%20el%20sistema" target="_blank">💬 WhatsApp Ventas</a>
+  </div>
+</div>
+
+<section class="hero">
+<div>
+  <div class="badge-live">● 500+ Negocios en El Alto / Viacha ya lo usan</div>
+  <h1>El POS que sí entiende a los negocios de <b>Viacha</b></h1>
+  <p>Deja Excel. ViachaPOS controla ventas, stock y emite <b>recibos y notas de venta profesionales</b> en 2 segundos. Funciona 100% offline, con escáner de celular y etiquetas de código de barras.</p>
+  <div class="ctas">
+    <a class="cta1" href="https://wa.me/59178912345?text=Hola%20ViachaPOS%20quiero%20comprar%20el%20sistema%20PRO" target="_blank">Comprar ahora por WhatsApp</a>
+    <a class="cta2" href="#modulos">▶ Ver qué incluye</a>
+  </div>
+  <p style="margin-top:20px;font-size:12px;color:#666">✓ Emisión de Recibos y Proformas ✓ Offline total ✓ Soporte directo • Pago único, tuyo para siempre</p>
+</div>
+<div class="mockup">
+  <img src="WhatsApp Image 2026-09-25 at 5.10.38 PM (1).jpeg" alt="Cajero ViachaPOS">
+</div>
+</section>
+
+<div class="section" id="modulos">
+  <div class="section-head">
+    <h2>Todo lo que tu tienda necesita</h2>
+    <p>Sistema completo para minimarkets, farmacias, librerías y restaurantes de Viacha. Sin mensualidades.</p>
+  </div>
+  <div class="features">
+    <div class="feat"><div class="icon">⚡</div><h3>CAJERO.HTML Ultra Rápido</h3><ul><li>Escaneo con celular vía Barcode to PC</li><li>Búsqueda por nombre o código</li><li>Códigos promo VIACHA-20OFF</li><li>Emisión de Recibo con logo y QR</li></ul></div>
+    <div class="feat"><div class="icon">📦</div><h3>ADMIN.HTML - Stock Total</h3><ul><li>Carga masiva desde Excel</li><li>Alerta de stock bajo</li><li>Control de vencimiento</li><li>Costo, precio y ganancia auto</li></ul></div>
+    <div class="feat"><div class="icon">🧾</div><h3>ETIQUETAS.HTML Pro</h3><ul><li>100 etiquetas por hoja carta</li><li>Código de barras EAN13</li><li>Con tu logo y precio</li><li>Ahorra Bs 200 en imprenta</li></ul></div>
+    <div class="feat"><div class="icon">📊</div><h3>REPORTES.HTML Chart.js</h3><ul><li>Ventas por día / mes</li><li>Productos más vendidos</li><li>Ganancia real y merma</li><li>Horario pico de venta</li></ul></div>
+    <div class="feat"><div class="icon">👥</div><h3>Clientes y Fiado</h3><ul><li>Registro de clientes frecuentes</li><li>Control de deudas y fiado</li><li>WhatsApp directo para cobrar</li><li>Historial de compras</li></ul></div>
+    <div class="feat"><div class="icon">📱</div><h3>100% Offline + Celular</h3><ul><li>No necesita internet para vender</li><li>Usa tu celular como lector</li><li>Backup automático en USB</li><li>Instalación en 5 min en XAMPP</li></ul></div>
+  </div>
+</div>
+
+<section class="section about" id="nosotros">
+  <div class="about-img"><img src="imagenes/BARRAS.jpg" alt="Viacha POS">
+    <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,black);padding:20px"><b style="font-size:18px">Yessenia Cruz Alejo</b><br><span style="font-size:12px;color:#9A9A94">Fundadora - Viacha, La Paz</span></div>
+  </div>
+  <div>
+    <h2 style="font-family:'Instrument Serif';font-size:52px">Acerca de Nosotros</h2>
+    <p style="color:#9A9A94;margin-top:16px;line-height:1.7">ViachaPOS nació en Viacha porque los sistemas de La Paz son caros y complicados. Hicimos un sistema simple, rápido y boliviano.<br><br>Somos de la UMSA - Viacha y ayudamos a más de 500 negocios entre Viacha y El Alto a controlar su ganancia real. Soporte por WhatsApp y si hace falta vamos a tu tienda.</p>
+    <div class="about-stats">
+      <div class="stat"><b>500+</b><span>Negocios activos</span></div>
+      <div class="stat"><b>3 años</b><span>En Viacha</span></div>
+      <div class="stat"><b>24/7</b><span>Soporte WhatsApp</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section">
+  <div class="section-head"><h2>Así se ve en tu negocio</h2></div>
+  <div class="screenshots">
+    <div class="shot"><span class="label">CAJERO - ESCANEO CON CELULAR</span><img src="imagenes/BARRAS.jpg" alt=""></div>
+    <div class="shot"><span class="label">ADMIN - 300 PRODUCTOS</span><img src="imagenes/WhatsApp Image 2026-09-25 at 5.10.38 PM.jpeg" alt=""></div>
+    <div class="shot"><span class="label">REPORTES - CHART.JS</span><img src="imagenes/reportes1.avif" alt=""></div>
+    <div class="shot"><span class="label">ETIQUETAS - 100 POR HOJA</span><img src="imagenes/ETIQUETAS.png" alt=""></div>
+  </div>
+</div>
+
+<div class="section" id="precios">
+  <div class="section-head"><h2>Un pago, tuyo para siempre</h2><p>Licencia de por vida. Sin pagos mensuales.</p></div>
+  <div class="pricing">
+    <div class="price-card"><h4>STARTER</h4><div class="price">Bs 350 <small>/ único</small></div><p style="color:#9A9A94;font-size:13px">Para tiendas que inician</p><br><ul style="list-style:none;font-size:13px;line-height:2;color:#9A9A94"><li>✓ Cajero + Admin 300 productos</li><li>✓ Emisión de Recibos</li><li>✓ 1 Dispositivo</li></ul><br><a href="https://wa.me/59178912345?text=Quiero%20ViachaPOS%20STARTER%20Bs350" target="_blank" class="btn-wa" style="display:block;text-align:center;background:#222">Comprar por WhatsApp</a></div>
+    <div class="price-card popular"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#FFB800;color:#000;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:800">MÁS VENDIDO EN VIACHA</div><h4>PRO - MINIMARKET</h4><div class="price">Bs 650 <small>/ único</small></div><p style="color:#9A9A94;font-size:13px">El que usan 500+ tiendas</p><br><ul style="list-style:none;font-size:13px;line-height:2;color:#fff"><li>✓ Cajero + Admin + Etiquetas</li><li>✓ Reportes + Clientes y Fiado</li><li>✓ Códigos Promo VIACHA-20OFF</li><li>✓ 3 Dispositivos + Soporte 24/7</li></ul><br><a href="https://wa.me/59178912345?text=Quiero%20ViachaPOS%20PRO%20Bs650" target="_blank" class="btn-wa" style="display:block;text-align:center;background:linear-gradient(90deg,#FF8A00,#FFC400);color:#000">Comprar ahora - Bs 650</a></div>
+    <div class="price-card"><h4>RED - 3 SUCURSALES</h4><div class="price">Bs 1200 <small>/ único</small></div><p style="color:#9A9A94;font-size:13px">Para cadenas</p><br><ul style="list-style:none;font-size:13px;line-height:2;color:#9A9A94"><li>✓ Todo PRO + Red local</li><li>✓ Usuarios ilimitados</li><li>✓ Capacitación en tu local</li></ul><br><a href="https://wa.me/59178912345?text=Quiero%20ViachaPOS%20RED%20Bs1200" target="_blank" class="btn-wa" style="display:block;text-align:center;background:#222">Cotizar por WhatsApp</a></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div>© 2026 ViachaPOS • Hecho en Viacha, La Paz por Yessenia Cruz Alejo<br>Emisión de recibos y notas de venta profesionales</div>
+  <div style="display:flex;gap:20px"><a href="https://wa.me/59178912345" target="_blank">WhatsApp: +591 78912345</a><a href="#">Viacha, Bolivia</a></div>
+</div>
+
+<a class="wa-float" href="https://wa.me/59168057805?text=Hola%20ViachaPOS%20quiero%20comprar%20el%20sistema" target="_blank">💬</a>
+
+</body>
+</html>
